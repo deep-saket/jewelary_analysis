@@ -1,0 +1,21 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="python-docx" />
+          <option value="pandas" />
+          <option value="openpyxl" />
+          <option value="python-dotenv" />
+          <option value="numpy" />
+          <option value="transformers" />
+          <option value="accelerate" />
+          <option value="torch" />
+          <option value="flask" />
+          <option value="plotly" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

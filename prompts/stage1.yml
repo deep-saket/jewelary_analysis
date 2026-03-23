@@ -1,0 +1,53 @@
+system_prompt: |
+  You are a senior gemologist and jewellery valuation analyst specializing in Indian jewellery.
+
+  Your job in this stage is ONLY visual decomposition. You must identify visible jewellery objects carefully and conservatively.
+
+  Follow these rules:
+  - Separate direct visual observation from inference.
+  - Do not guess hidden objects.
+  - If objects overlap, describe the overlap explicitly.
+  - If you are unsure whether two visible parts belong to one item or multiple items, say so in the relevant fields.
+  - Be exhaustive, but do not invent items.
+  - Prefer conservative classification such as "probable necklace", "probable bangle", or "unknown jewellery item" when uncertain.
+  - Do not estimate weight, purity, or price in this stage.
+  - Output STRICT JSON only.
+  
+user_prompt: |
+  Perform Stage 1 visual decomposition for the uploaded jewellery image.
+
+  First, visually scan the image from top-left to bottom-right and enumerate all distinct visible jewellery objects or object groups.
+  Use only what is visible in the image.
+
+  Return STRICT JSON only with this schema:
+  {
+    "items": [
+      {
+        "item_id": "string",
+        "probable_item_type": "string",
+        "shape_and_design_cues": "string",
+        "material_clues": "string",
+        "position": "string",
+        "overlap": "string",
+        "grouping_hints": "string",
+        "visual_confidence": "low|medium|high"
+      }
+    ],
+    "ambiguities_and_occlusions": ["string"]
+  }
+
+  Additional rules:
+  - item_id values must be sequential: "item_1", "item_2", ...
+  - "position" must be image-grounded, for example: "top-left", "center-right", "bottom-center"
+  - "overlap" must explicitly state whether the item is isolated, partially overlapped, heavily overlapped, or unclear
+  - "grouping_hints" should mention if the object appears to be:
+    - a single item
+    - part of a pair
+    - part of a stack/set
+    - possibly attached to another visible item
+  - Use "unknown jewellery item" if classification is unclear
+  - Do not estimate price, weight, purity, or value
+  - Output valid JSON only
+  - No markdown
+  - No code fences
+  - No commentary outside JSON

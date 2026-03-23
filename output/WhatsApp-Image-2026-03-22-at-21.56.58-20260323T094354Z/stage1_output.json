@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "probable_item_type": "necklace",
+      "shape_and_design_cues": "flat chain with intricate floral and circular motifs and a decorative pendant-like design at the top-right",
+      "material_clues": "yellow metal, likely gold",
+      "position": "top-left to center",
+      "overlap": "partially overlapped by item_2 and item_3",
+      "grouping_hints": "single item",
+      "visual_confidence": "medium"
+    },
+    {
+      "item_id": "item_2",
+      "probable_item_type": "pair of earrings",
+      "shape_and_design_cues": "two small floral-shaped stud earrings",
+      "material_clues": "yellow metal, likely gold",
+      "position": "bottom-left corner near tray edge",
+      "overlap": "isolated",
+      "grouping_hints": "part of a pair",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_3",
+      "probable_item_type": "bangle set",
+      "shape_and_design_cues": "cylindrical stack of multiple bangles with decorative patterns on surface",
+      "material_clues": "yellow metal, likely gold",
+      "position": "bottom-right center",
+      "overlap": "partially overlapped by item_1",
+      "grouping_hints": "part of a stack",
+      "visual_confidence": "high"
+    }
+  ],
+  "ambiguities_and_occlusions": [
+    "Unclear how many separate necklaces or chains exactly form the chainlike shapes in the center and top parts of item_1 due to partial overlapping.",
+    "The pendant-like part attached to the necklace in item_1 is not clearly distinct from the chain, making the exact count of items uncertain.",
+    "Some finer details of bangles in item_3 are obscured due to partial overlapping with necklace item_1 and camera angle."
+  ]
+}
