@@ -1,0 +1,112 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "type": "chain necklace",
+      "count": 1,
+      "shape_or_design": "thin chain with a clasp",
+      "position": "top-left",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 5,
+        "max": 8
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 65000,
+        "max": 99500
+      },
+      "confidence": "high",
+      "rationale": "Thin gold-colored chain necklace visible at top-left with clasp; thin chains typically weigh less. 22K purity assumed based on traditional yellow gold color and regional jewellery styles. Weight estimate conservative for size and thinness."
+    },
+    {
+      "item_id": "item_2",
+      "type": "necklace",
+      "count": 1,
+      "shape_or_design": "wider flat linked detailed design necklace",
+      "position": "top-center",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 15,
+        "max": 25
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 186525,
+        "max": 310875
+      },
+      "confidence": "high",
+      "rationale": "Wider, heavier necklace with detailed design at top-center, typical of heavier traditional gold necklaces. Weight conservatively estimated between 15-25g. Purity assumed likely 22K due to classic Indian style and color."
+    },
+    {
+      "item_id": "item_3",
+      "type": "beaded necklace",
+      "count": 1,
+      "shape_or_design": "round gold bead-like design with pendant-like end",
+      "position": "top-right",
+      "estimated_material": "yellow metal, likely gold with possible beads/stones",
+      "estimated_weight_grams_range": {
+        "min": 8,
+        "max": 12
+      },
+      "estimated_purity": "likely 18K",
+      "estimated_value_inr": {
+        "min": 81392,
+        "max": 122610
+      },
+      "confidence": "medium",
+      "rationale": "Beaded necklace with round gold-like beads and pendant. Weight includes some volume that may be beads/stones, so gold content likely lower hence slightly lower purity estimate 18K. Weight conservatively estimated with medium confidence due to partial occlusion."
+    },
+    {
+      "item_id": "item_4",
+      "type": "bracelet or bangle set",
+      "count": 4,
+      "shape_or_design": "multiple stacked circular bangles with intricate design",
+      "position": "bottom-right",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 20,
+        "max": 30
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 248700,
+        "max": 373050
+      },
+      "confidence": "high",
+      "rationale": "Set of 4 stacked gold-colored bangles with intricate design, likely hollow but substantial combined weight. Traditional purity of 22K assumed. Weight range conservatively sized for typical bangle weights."
+    },
+    {
+      "item_id": "item_5",
+      "type": "earrings",
+      "count": 2,
+      "shape_or_design": "small floral shaped studs",
+      "position": "bottom-left",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 2,
+        "max": 3
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 24870,
+        "max": 37305
+      },
+      "confidence": "medium",
+      "rationale": "Pair of small floral gold-colored earrings, relatively light weight estimated conservatively between 2-3 grams total. Assumed likely 22K purity consistent with other items."
+    }
+  ],
+  "total_estimated_value_inr": {
+    "min": 605487,
+    "max": 743340
+  },
+  "assumptions": [
+    "Gold rate taken as 12435 INR per gram for 22K and 10174 INR per gram for 18K from source Goodreturns dated 23 March 2026.",
+    "Making charges and other levies excluded for conservative estimate.",
+    "Purity estimates based on traditional yellow gold color and typical Indian jewellery styles.",
+    "Weight ranges based on visible size, style, and typical weights for such jewellery.",
+    "Beaded necklace possibly contains beads/stones reducing gold content; thus lower purity assumption.",
+    "Counting 4 bangles in set conservatively assuming visible overlapping bangles.",
+    "Earrings estimated as paired items with small floral design."
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "type": "chain necklace",
+      "count": 1,
+      "shape_or_design": "thin chain with clasp",
+      "position": "top-left",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 7,
+        "max": 10
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 90000,
+        "max": 130000
+      },
+      "confidence": "high",
+      "rationale": "Visible as a single thin gold-colored chain, typical weight for thin chain necklaces, assumed 22K purity based on traditional yellow gold context."
+    },
+    {
+      "item_id": "item_2",
+      "type": "necklace",
+      "count": 1,
+      "shape_or_design": "wider flat linked necklace with detailed design",
+      "position": "top-center",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 20,
+        "max": 25
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 250000,
+        "max": 315000
+      },
+      "confidence": "high",
+      "rationale": "Wider, heavier design typical of traditional necklaces. Weight is conservatively estimated higher than thin chain but not extremely heavy. 22K purity assumed following common traditional jewellery purity."
+    },
+    {
+      "item_id": "item_3",
+      "type": "beaded necklace",
+      "count": 1,
+      "shape_or_design": "round bead-like design with pendant end",
+      "position": "top-right",
+      "estimated_material": "yellow metal, likely gold with possible gold beads",
+      "estimated_weight_grams_range": {
+        "min": 15,
+        "max": 18
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 190000,
+        "max": 225000
+      },
+      "confidence": "medium",
+      "rationale": "Design suggests solid or hollow beads, pendants add to weight. Purity assumed 22K as traditional. Uncertainty due to potential bead hollowing or mixed materials."
+    },
+    {
+      "item_id": "item_4",
+      "type": "bracelet or bangle set",
+      "count": 3,
+      "shape_or_design": "stacked circular bangles with hollow intricate design",
+      "position": "bottom-right",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 45,
+        "max": 55
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 560000,
+        "max": 685000
+      },
+      "confidence": "high",
+      "rationale": "Three stacked bangles, each estimated around 15-18g considering hollow construction. 22K purity assumed as typical for traditional bangles."
+    },
+    {
+      "item_id": "item_5",
+      "type": "earrings",
+      "count": 2,
+      "shape_or_design": "two small floral shaped earrings",
+      "position": "bottom-left",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 4,
+        "max": 5
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 50000,
+        "max": 64000
+      },
+      "confidence": "medium",
+      "rationale": "Pair of small earrings, each ~2g with 22K purity assumed conservatively."
+    }
+  ],
+  "total_estimated_value_inr": {
+    "min": 1140000.0,
+    "max": 1419000.0
+  },
+  "assumptions": [
+    "Gold material estimated from yellow metal color seen in image.",
+    "Purity assumed likely 22K as traditional Indian jewellery tends to use 22K gold.",
+    "Weights conservatively estimated based on typical jewelry sizes and shapes visible.",
+    "Gold rate from Goodreturns used: 12435 INR/g for 22K gold as of 23 March 2026.",
+    "Making charges and minor deductions subsumed within value range as conservative buffers.",
+    "Counts reflect visible distinct items or sets (e.g., 3 bangles stacked, 2 earrings).",
+    "Weight estimates consider possible hollowness for bangles and bead construction."
+  ],
+  "override_applied": {
+    "field": "total_estimated_value_inr",
+    "reason": "Model returned inconsistent totals after retries. Totals were recomputed from item ranges."
+  }
+}

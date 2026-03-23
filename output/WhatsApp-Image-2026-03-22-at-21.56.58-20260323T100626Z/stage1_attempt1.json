@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "probable_item_type": "chain necklace",
+      "shape_and_design_cues": "thin chain with a clasp visible on the left side",
+      "material_clues": "gold color",
+      "position": "top-left",
+      "overlap": "partially overlapped with a wider necklace below",
+      "grouping_hints": "single item",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_2",
+      "probable_item_type": "necklace",
+      "shape_and_design_cues": "wider, flat linked necklace with detailed design, partially coiled",
+      "material_clues": "gold color",
+      "position": "top-center",
+      "overlap": "partially overlapped with other necklaces and bracelet",
+      "grouping_hints": "single item",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_3",
+      "probable_item_type": "beaded necklace",
+      "shape_and_design_cues": "round gold bead-like design, strung together in a loop with a pendant-like end",
+      "material_clues": "gold color",
+      "position": "top-right",
+      "overlap": "partially overlapped with wider necklace and bracelet",
+      "grouping_hints": "single item",
+      "visual_confidence": "medium"
+    },
+    {
+      "item_id": "item_4",
+      "probable_item_type": "bracelet or bangle set",
+      "shape_and_design_cues": "multiple stacked circular bangles, hollow and intricate design",
+      "material_clues": "gold color",
+      "position": "bottom-right",
+      "overlap": "heavily overlapped with necklaces above and behind",
+      "grouping_hints": "stack/set of bangles",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_5",
+      "probable_item_type": "earrings or small stud-like items",
+      "shape_and_design_cues": "two small floral shaped items on bottom-left",
+      "material_clues": "gold color",
+      "position": "bottom-left",
+      "overlap": "isolated",
+      "grouping_hints": "pair",
+      "visual_confidence": "medium"
+    }
+  ],
+  "ambiguities_and_occlusions": [
+    "Contents of some necklaces are intertwined making clear separation challenging.",
+    "Small pendant or connecting elements inside necklaces might be merged or hidden.",
+    "Potential smaller items obscured by stacked bangles or necklace layers."
+  ]
+}
