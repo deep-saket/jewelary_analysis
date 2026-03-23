@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "probable_item_type": "necklace",
+      "shape_and_design_cues": "Curved with repeated circular and ornamental patterns, chain link visible attached to the main body",
+      "material_clues": "Gold color with shine, some embedded stones or embellishments visible",
+      "position": "top-center",
+      "overlap": "partially overlapped by item_3 and item_2",
+      "grouping_hints": "single item, appears continuous and looped as a necklace",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_2",
+      "probable_item_type": "necklace or large chain",
+      "shape_and_design_cues": "Segmented gold units linked together forming a chain or necklace",
+      "material_clues": "Gold color with some shine, possibly lighter design than item_1",
+      "position": "top-right",
+      "overlap": "partially overlapped by item_1",
+      "grouping_hints": "single item, seems attached or close to item_1 but structurally distinct",
+      "visual_confidence": "medium"
+    },
+    {
+      "item_id": "item_3",
+      "probable_item_type": "set of bangles",
+      "shape_and_design_cues": "Circular closed loops with detailed patterns on the outer surface",
+      "material_clues": "Gold color with embedded stones or textured design",
+      "position": "bottom-right",
+      "overlap": "overlapping with item_1",
+      "grouping_hints": "multiple bangles stacked together forming a set",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_4",
+      "probable_item_type": "pair of stud earrings",
+      "shape_and_design_cues": "Two small flower-shaped items, separate from other jewellery",
+      "material_clues": "gold color matching the other items",
+      "position": "bottom-left",
+      "overlap": "isolated",
+      "grouping_hints": "part of a pair",
+      "visual_confidence": "high"
+    }
+  ],
+  "ambiguities_and_occlusions": [
+    "Item_1 and item_2 partially overlap and are close; their attachment or separation could be clearer with a different angle.",
+    "Item_3 bangles partially cover items beneath, making exact boundaries unclear."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "type": "necklace",
+      "count": 1,
+      "shape_or_design": "Curved with repeated circular and ornamental patterns, chain link visible attached",
+      "position": "top-center",
+      "estimated_material": "yellow metal, likely gold with stones",
+      "estimated_weight_grams_range": {
+        "min": 25,
+        "max": 35
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 325000,
+        "max": 455000
+      },
+      "confidence": "high",
+      "rationale": "Highly visible heavy necklace with gold shine and some stone embellishments suggests mostly gold weight with some non-gold volume; estimated weight typical for ornate necklace; 22K purity as common traditional standard; gold rate 12435 INR/g applied with conservative making charge inclusion"
+    },
+    {
+      "item_id": "item_2",
+      "type": "necklace",
+      "count": 1,
+      "shape_or_design": "Segmented gold units linked together forming chain or necklace",
+      "position": "top-right",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 15,
+        "max": 22
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 186525,
+        "max": 273570
+      },
+      "confidence": "medium",
+      "rationale": "Medium weight linked chain partially overlapped by item_1; less heavy than item_1; gold shine suggests mainly gold; no clear heavy stones; 22K likely for traditional yellow gold"
+    },
+    {
+      "item_id": "item_3",
+      "type": "set of bangles",
+      "count": 3,
+      "shape_or_design": "Circular closed loops with detailed patterns on outer surface",
+      "position": "bottom-right",
+      "estimated_material": "yellow metal, likely gold with some embedded stones",
+      "estimated_weight_grams_range": {
+        "min": 30,
+        "max": 40
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 373050,
+        "max": 497400
+      },
+      "confidence": "high",
+      "rationale": "Three visible stacked bangles; typical traditional gold bangles weight per piece ~10-13 g; patterns and stones reduce solid gold proportion but still significant gold mass; 22K gold purity standard"
+    },
+    {
+      "item_id": "item_4",
+      "type": "pair of stud earrings",
+      "count": 2,
+      "shape_or_design": "Two small flower-shaped earrings",
+      "position": "bottom-left",
+      "estimated_material": "yellow metal, likely gold",
+      "estimated_weight_grams_range": {
+        "min": 3,
+        "max": 5
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 37000,
+        "max": 62000
+      },
+      "confidence": "high",
+      "rationale": "Small stud earrings typical weight 1.5-2.5 g each; simple design without large stones; gold color matching other items; likely 22K purity"
+    }
+  ],
+  "total_estimated_value_inr": {
+    "min": 921575,
+    "max": 1289970
+  },
+  "assumptions": [
+    "Gold rate assumed from Goodreturns 23 March 2026 for 22K gold = 12435 INR/g",
+    "Making charges and minor deductions are conservatively included in value estimates",
+    "Purity is assumed likely 22K based on traditional yellow gold appearance",
+    "Weights are estimated conservatively based on typical jewellery types and visible size",
+    "Stones and embellishments reduce gold content but are not separately valued",
+    "Each item is counted as separate and not merged even if partially overlapped"
+  ]
+}

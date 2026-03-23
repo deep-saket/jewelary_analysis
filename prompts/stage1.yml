@@ -15,6 +15,9 @@ system_prompt: |
   - If multiple elongated gold objects appear at different vertical positions, they must be treated as separate items.
   - Never merge two visually separate items even if they are the same type.
   - Prefer splitting into multiple items over merging unless clearly physically connected.
+  - STRUCTURAL CONTINUITY RULE: if multiple visible components appear physically connected and form one wearable item, they must be treated as a single item.
+  - ATTACHMENT RULE: if parts follow the same curve or loop, are visually connected, or align as one wearable structure, treat them as one item.
+  - WEARABLE OBJECT RULE: if components together form a complete wearable shape such as a necklace loop or bracelet circle, merge them into one item.
   
 user_prompt: |
   Perform Stage 1 visual decomposition for the uploaded jewellery image.
@@ -48,6 +51,12 @@ user_prompt: |
   - IMPORTANT DETECTION RULE: if multiple elongated gold objects appear at different vertical positions, such as a thin chain at the top and a heavier ornate necklace below, they must be separate items
   - SPATIAL COVERAGE RULE: if jewellery appears in multiple zones, each zone must be represented in the output
   - ANTI-MERGE RULE: never merge two visually separate items even if they are the same type
+  - STRUCTURAL CONTINUITY RULE: if multiple visible components appear physically connected and form one wearable item, they must be treated as a single item
+  - ATTACHMENT RULE:
+    - if parts follow the same curve or loop, merge them
+    - if parts are visually connected, merge them
+    - if parts align as a wearable structure, merge them
+  - WEARABLE OBJECT RULE: if components together form a complete wearable shape such as a necklace loop or bracelet circle, they must be merged into one item
   - ELONGATED OBJECT RULE:
     - if thickness differs, separate items
     - if vertical position differs, separate items
@@ -70,6 +79,7 @@ user_prompt: |
   Self-check before final output:
   - verify all visible jewellery regions are accounted for
   - verify no two distinct objects were merged
+  - if two items are connected or form a continuous loop or chain, merge them
 
   Correction note:
   {retry_note}
