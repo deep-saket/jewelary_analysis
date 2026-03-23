@@ -65,6 +65,8 @@ streamlit run frontend/streamlit_app.py
 
 ## Local Batch Testing
 
+`local_test.py` runs the same OpenAI-backed service layer used by the FastAPI app, but directly from your terminal. It does not go through the HTTP API.
+
 Set the input in [local_test_args.yml](/Users/saketm10/Documents/jewelary_analysis/local_test_args.yml):
 
 ```yaml
@@ -78,6 +80,12 @@ Then run:
 python local_test.py
 ```
 
+If you are using the Conda environment created for this project, you can also run:
+
+```bash
+~/miniconda3/envs/jewelary_analysis/bin/python local_test.py
+```
+
 For a directory batch:
 
 ```yaml
@@ -85,7 +93,41 @@ input_path: "/path/to/image-directory"
 recursive: true
 ```
 
-Each image creates its own subdirectory inside `output/` with the copied source image, request metadata, stage outputs, and the final JSON result.
+Supported image types:
+
+```text
+.jpg .jpeg .png .webp .gif
+```
+
+What `local_test.py` does:
+
+1. Reads `input_path` from [local_test_args.yml](/Users/saketm10/Documents/jewelary_analysis/local_test_args.yml)
+2. Detects whether the path is a single image or a directory
+3. Calls the same [analyze_image(...)](/Users/saketm10/Documents/jewelary_analysis/services/vlm_service.py) function used by the backend
+4. Writes one output directory per processed image under `output/`
+5. Prints a per-image JSON status summary to stdout
+
+Output artifacts per image typically include:
+
+```text
+output/<image-name>-<timestamp>/
+├── <copied-image>
+├── request_metadata.json
+├── stage1_attempt1.json
+├── stage1_attempt2.json          # only if Stage 1 retry happened
+├── stage1_output.json
+├── gold_rate_reference.json
+├── stage2_attempt1.json
+├── stage2_attempt2.json          # only if Stage 2 retry happened
+├── analysis_output.json
+└── error.json                    # only if a non-recoverable validation failure remained
+```
+
+Notes on local test behavior:
+
+- If Stage 1 appears under-segmented, the service automatically retries Stage 1 with a correction note.
+- If Stage 2 totals are inconsistent after retries, the system now overrides `total_estimated_value_inr` in code and marks the output with `override_applied`.
+- If an image fails for a non-recoverable reason, `local_test.py` exits non-zero and prints an error summary for that file.
 
 ## API
 
