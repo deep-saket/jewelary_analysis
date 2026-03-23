@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "probable_item_type": "thin gold chain",
+      "shape_and_design_cues": "thin elongated chain with simple links",
+      "material_clues": "gold-colored metallic shine",
+      "position": "top-left",
+      "overlap": "partially overlapped by adjacent necklace",
+      "grouping_hints": "single isolated item",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_2",
+      "probable_item_type": "necklace with rounded bead design",
+      "shape_and_design_cues": "rounded linked bead-like elements forming a necklace",
+      "material_clues": "gold-colored reflective metallic",
+      "position": "top-right",
+      "overlap": "partially overlapped by chain and additional jewelry below",
+      "grouping_hints": "single item",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_3",
+      "probable_item_type": "flat broad necklace",
+      "shape_and_design_cues": "broad flat band with fine detailed segments, curved into circular shape",
+      "material_clues": "gold color, metallic texture",
+      "position": "middle-center",
+      "overlap": "partially overlapped by thin necklaces inside it",
+      "grouping_hints": "single item",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_4",
+      "probable_item_type": "delicate chain or necklace with small pendant",
+      "shape_and_design_cues": "thin chain with small beads or pendants attached",
+      "material_clues": "gold-colored metallic with whitish accents (pearls or stones)",
+      "position": "middle-center inside broader necklace",
+      "overlap": "heavily overlapped by broader necklace",
+      "grouping_hints": "single item inside another necklace",
+      "visual_confidence": "medium"
+    },
+    {
+      "item_id": "item_5",
+      "probable_item_type": "set of bangles",
+      "shape_and_design_cues": "cylindrical stacked bangles with raised patterns",
+      "material_clues": "gold-colored metallic shine",
+      "position": "bottom-right",
+      "overlap": "isolated, not overlapped",
+      "grouping_hints": "part of a stack/set",
+      "visual_confidence": "high"
+    },
+    {
+      "item_id": "item_6",
+      "probable_item_type": "pair of studs or small earrings",
+      "shape_and_design_cues": "two small round floral shapes with petals, identical",
+      "material_clues": "gold-colored metal",
+      "position": "bottom-left",
+      "overlap": "isolated and separated",
+      "grouping_hints": "part of a pair",
+      "visual_confidence": "high"
+    }
+  ],
+  "ambiguities_and_occlusions": [
+    "It is unclear if the thin chain at top-left is attached to or separate from the rounded bead necklace near top-right.",
+    "Some smaller elements inside the broad necklace could be pendants or small chains but overlap is heavy and details unclear."
+  ]
+}

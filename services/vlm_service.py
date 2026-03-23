@@ -22,6 +22,7 @@ from utils.helpers import (
 )
 from services.gold_price_service import GoldPriceServiceError, format_gold_rate_context, get_live_gold_rates
 from utils.parser import parse_json_object, parse_stage1_json, parse_valuation_json
+from utils.validator import validate_stage1_coverage
 
 logger = logging.getLogger(__name__)
 
@@ -62,9 +63,11 @@ def _call_openai(system_prompt: str, content: list[dict[str, Any]]) -> str:
     raise VLMServiceError(f"OpenAI request failed after {attempts} attempts.") from last_error
 
 
-def _build_stage1_content(image_data_url: str) -> list[dict[str, Any]]:
+def _build_stage1_content(image_data_url: str, retry_note: str | None = None) -> list[dict[str, Any]]:
+    prompt_text = STAGE1_PROMPT["user_prompt"]
+    prompt_text = prompt_text.replace("{retry_note}", retry_note or "No correction note.")
     return [
-        {"type": "input_text", "text": STAGE1_PROMPT["user_prompt"]},
+        {"type": "input_text", "text": prompt_text},
         {"type": "input_image", "image_url": image_data_url},
     ]
 
@@ -78,13 +81,7 @@ def _build_stage2_content(
     prompt_text = STAGE2_PROMPT["user_prompt"]
     prompt_text = prompt_text.replace("{stage1_output}", json.dumps(stage1_output, indent=2))
     prompt_text = prompt_text.replace("{retry_note}", retry_note or "No correction note.")
-    if gold_rate_context:
-        prompt_text = (
-            f"{prompt_text}\n\n"
-            "Live gold rate reference fetched at runtime:\n"
-            f"{gold_rate_context}\n\n"
-            "Use this as the conservative market-rate reference for valuation assumptions where relevant."
-        )
+    prompt_text = prompt_text.replace("{gold_rate}", gold_rate_context or "Gold rate unavailable.")
 
     return [
         {
@@ -143,7 +140,22 @@ def analyze_image(
 
     logger.info("Starting Stage 1 decomposition")
     stage1_raw = _call_openai(STAGE1_PROMPT["system_prompt"], _build_stage1_content(image_data_url))
+    logger.info("Stage 1 raw output: %s", stage1_raw)
     stage1_output = parse_stage1_json(stage1_raw)
+    _persist_model_json_attempt(run_dir / "stage1_attempt1.json", stage1_raw)
+
+    coverage_validation = validate_stage1_coverage(stage1_output)
+    if not coverage_validation["is_valid"]:
+        logger.info("Stage 1 retry triggered: %s", "; ".join(coverage_validation["issues"]))
+        stage1_retry_raw = _call_openai(
+            STAGE1_PROMPT["system_prompt"],
+            _build_stage1_content(image_data_url, retry_note=str(coverage_validation["retry_note"])),
+        )
+        logger.info("Stage 1 retry raw output: %s", stage1_retry_raw)
+        _persist_model_json_attempt(run_dir / "stage1_attempt2.json", stage1_retry_raw)
+        stage1_output = parse_stage1_json(stage1_retry_raw)
+
+    logger.info("Final Stage 1 output: %s", json.dumps(stage1_output, indent=2))
     _write_json(run_dir / "stage1_output.json", stage1_output)
 
     gold_rate_data: dict[str, Any] | None = None

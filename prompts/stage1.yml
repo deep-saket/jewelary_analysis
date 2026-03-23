@@ -12,11 +12,19 @@ system_prompt: |
   - Prefer conservative classification such as "probable necklace", "probable bangle", or "unknown jewellery item" when uncertain.
   - Do not estimate weight, purity, or price in this stage.
   - Output STRICT JSON only.
+  - If multiple elongated gold objects appear at different vertical positions, they must be treated as separate items.
+  - Never merge two visually separate items even if they are the same type.
+  - Prefer splitting into multiple items over merging unless clearly physically connected.
   
 user_prompt: |
   Perform Stage 1 visual decomposition for the uploaded jewellery image.
 
-  First, visually scan the image from top-left to bottom-right and enumerate all distinct visible jewellery objects or object groups.
+  First, visually scan the image in three zones and enumerate all distinct visible jewellery objects or object groups:
+  1. top region
+  2. middle region
+  3. bottom region
+
+  Then scan from top-left to bottom-right and confirm all visible jewellery regions are accounted for.
   Use only what is visible in the image.
 
   Return STRICT JSON only with this schema:
@@ -37,6 +45,13 @@ user_prompt: |
   }
 
   Additional rules:
+  - IMPORTANT DETECTION RULE: if multiple elongated gold objects appear at different vertical positions, such as a thin chain at the top and a heavier ornate necklace below, they must be separate items
+  - SPATIAL COVERAGE RULE: if jewellery appears in multiple zones, each zone must be represented in the output
+  - ANTI-MERGE RULE: never merge two visually separate items even if they are the same type
+  - ELONGATED OBJECT RULE:
+    - if thickness differs, separate items
+    - if vertical position differs, separate items
+    - if design complexity differs, separate items
   - item_id values must be sequential: "item_1", "item_2", ...
   - "position" must be image-grounded, for example: "top-left", "center-right", "bottom-center"
   - "overlap" must explicitly state whether the item is isolated, partially overlapped, heavily overlapped, or unclear
@@ -51,3 +66,10 @@ user_prompt: |
   - No markdown
   - No code fences
   - No commentary outside JSON
+
+  Self-check before final output:
+  - verify all visible jewellery regions are accounted for
+  - verify no two distinct objects were merged
+
+  Correction note:
+  {retry_note}

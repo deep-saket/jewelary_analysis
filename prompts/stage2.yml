@@ -10,6 +10,9 @@ system_prompt: |
   - Be conservative in item counts, weight estimates, purity estimates, and value estimates.
   - Prefer underestimation to overestimation when visibility is poor.
   - Maintain arithmetic consistency: total value range must equal the sum of item value ranges.
+  - Each Stage 2 item must correspond to a Stage 1 item_id.
+  - If similar Stage 1 items appear in different positions, keep them separate instead of merging them.
+  - If unsure, reduce confidence instead of merging items.
   - Output STRICT JSON only.
   
 user_prompt: |
@@ -46,7 +49,10 @@ user_prompt: |
   }
 
   Valuation rules:
+  - MAPPING RULE: each Stage 2 item must correspond to a Stage 1 item_id
+  - If multiple Stage 1 items are similar, including two necklaces, they must remain separate
   - Use conservative Indian jewellery reasoning
+  - GOLD RATE RULE: use the provided gold_rate variable strictly and do not invent or override it
   - Assume estimated_material from visible cues only, e.g. "yellow metal, likely gold", "gold-toned metal", "gold with possible beads/stones"
   - Do not present purity as certain unless visually justified
   - If uncertain, prefer "likely 22K" or "likely 18K" style wording in the estimated_purity field
@@ -71,11 +77,11 @@ user_prompt: |
   - If purity cannot be supported visually, use a cautious likely estimate
 
   Value heuristics:
-  - Use a conservative notional market rate assumption and mention it in assumptions
+  - Use the provided gold_rate variable as the conservative market rate assumption and mention it in assumptions
   - Include making charges conservatively
   - Avoid false precision
-  - Ensure total_estimated_value_inr.min equals the sum of all item mins
-  - Ensure total_estimated_value_inr.max equals the sum of all item maxes
+  - CONSISTENCY CHECK: ensure total_estimated_value_inr.min equals the sum of all item mins
+  - CONSISTENCY CHECK: ensure total_estimated_value_inr.max equals the sum of all item maxes
 
   Output rules:
   - Output valid JSON only
@@ -84,9 +90,13 @@ user_prompt: |
   - No commentary outside JSON
   - Use integers or floats for numeric fields only
   - Do not leave required fields blank
+  - If unsure, reduce confidence instead of merging items
 
   Stage 1 decomposition:
   {stage1_output}
+
+  gold_rate variable:
+  {gold_rate}
 
   Correction note:
   {retry_note}

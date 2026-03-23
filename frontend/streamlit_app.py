@@ -55,8 +55,8 @@ if st.button("Analyze image", type="primary", disabled=uploaded_file is None):
         st.json(result)
 
         items = result.get("items", [])
+        st.subheader(f"Detected Items: {len(items)}")
         if items:
-            st.subheader("Valuation Items")
             st.dataframe(items, use_container_width=True)
 
         stage1_output = result.get("stage1_visual_decomposition")

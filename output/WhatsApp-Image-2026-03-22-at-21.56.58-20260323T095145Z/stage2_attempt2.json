@@ -1,0 +1,131 @@
+{
+  "items": [
+    {
+      "item_id": "item_1",
+      "type": "thin gold chain",
+      "count": 1,
+      "shape_or_design": "thin elongated chain with simple links",
+      "position": "top-left",
+      "estimated_material": "gold-colored metallic shine",
+      "estimated_weight_grams_range": {
+        "min": 4,
+        "max": 6
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 52000,
+        "max": 78000
+      },
+      "confidence": "high",
+      "rationale": "Visible as a thin chain with simple links, typical weight conservatively 4-6g, likely 22K purity based on traditional yellow metal appearance, gold rate for 22K used at 12435 INR/g with nominal making charges included."
+    },
+    {
+      "item_id": "item_2",
+      "type": "necklace with rounded bead design",
+      "count": 1,
+      "shape_or_design": "rounded linked bead-like elements forming a necklace",
+      "position": "top-right",
+      "estimated_material": "gold-colored reflective metallic",
+      "estimated_weight_grams_range": {
+        "min": 15,
+        "max": 20
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 186500,
+        "max": 248700
+      },
+      "confidence": "high",
+      "rationale": "Heavier ornate necklace with rounded beads; conservatively estimated weight 15-20g, 22K purity consistent with traditional design, gold rate at 12435 INR/g, including moderate making charges."
+    },
+    {
+      "item_id": "item_3",
+      "type": "flat broad necklace",
+      "count": 1,
+      "shape_or_design": "broad flat band with fine detailed segments, curved circular shape",
+      "position": "middle-center",
+      "estimated_material": "gold color, metallic texture",
+      "estimated_weight_grams_range": {
+        "min": 40,
+        "max": 50
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 497400,
+        "max": 621750
+      },
+      "confidence": "high",
+      "rationale": "Broad flat necklace usually substantial weight; conservatively 40-50g estimated, traditional appearance suggests likely 22K, gold rate 12435 INR/g with making charges included."
+    },
+    {
+      "item_id": "item_4",
+      "type": "delicate chain or necklace with small pendant",
+      "count": 1,
+      "shape_or_design": "thin chain with small beads or pendants attached",
+      "position": "middle-center inside broader necklace",
+      "estimated_material": "gold-colored metallic with possible pearls or stones",
+      "estimated_weight_grams_range": {
+        "min": 3,
+        "max": 5
+      },
+      "estimated_purity": "likely 18K",
+      "estimated_value_inr": {
+        "min": 30520,
+        "max": 50870
+      },
+      "confidence": "medium",
+      "rationale": "Thin and delicate chain with small pendant, possibly containing non-gold elements reducing gold weight; estimated weight 3-5g and likely 18K due to possible stones or pearls, gold rate 10174 INR/g applied."
+    },
+    {
+      "item_id": "item_5",
+      "type": "set of bangles",
+      "count": 3,
+      "shape_or_design": "cylindrical stacked bangles with raised patterns",
+      "position": "bottom-right",
+      "estimated_material": "gold-colored metallic shine",
+      "estimated_weight_grams_range": {
+        "min": 30,
+        "max": 40
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 373050,
+        "max": 497400
+      },
+      "confidence": "high",
+      "rationale": "Set of 3 bangles, typical total weight for 3 bangles conservatively 30-40g, traditional shine and design suggests likely 22K purity, gold rate 12435 INR/g with making charges."
+    },
+    {
+      "item_id": "item_6",
+      "type": "pair of studs or small earrings",
+      "count": 2,
+      "shape_or_design": "two small round floral shapes with petals, identical",
+      "position": "bottom-left",
+      "estimated_material": "gold-colored metal",
+      "estimated_weight_grams_range": {
+        "min": 2,
+        "max": 3
+      },
+      "estimated_purity": "likely 22K",
+      "estimated_value_inr": {
+        "min": 24870,
+        "max": 37305
+      },
+      "confidence": "high",
+      "rationale": "Small pair of earrings, combined weight conservatively estimated 2-3g, traditional gold appearance likely 22K, gold rate 12435 INR/g used."
+    }
+  ],
+  "total_estimated_value_inr": {
+    "min": 1164310,
+    "max": 1577025
+  },
+  "assumptions": [
+    "Gold rate used strictly as 22K = 12435 INR/g and 18K = 10174 INR/g per Goodreturns data dated 23 March 2026.",
+    "Making charges included conservatively in value estimates.",
+    "Purity assigned based on traditional design cues: mostly likely 22K, except delicate chain with possible stones at 18K.",
+    "Weights estimated conservatively within typical ranges for these jewellery types and design styles.",
+    "Total value ranges summed exactly from individual item ranges.",
+    "Items counted as per visible distinct pieces; bangles counted as 3 in the stack.",
+    "Overlap and occlusion issues accounted by conservative underestimation."
+  ]
+}
