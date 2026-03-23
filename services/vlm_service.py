@@ -21,7 +21,7 @@ from utils.helpers import (
     sanitize_filename_component,
 )
 from services.gold_price_service import GoldPriceServiceError, format_gold_rate_context, get_live_gold_rates
-from utils.parser import parse_json_object, parse_stage1_json, parse_valuation_json
+from utils.parser import coerce_valuation_totals, parse_json_object, parse_stage1_json, parse_valuation_json
 from utils.validator import validate_stage1_coverage
 
 logger = logging.getLogger(__name__)
@@ -207,14 +207,23 @@ def analyze_image(
             final_json = parse_valuation_json(stage2_retry_raw)
             _write_json(run_dir / "stage2_attempt2.json", final_json)
         except ValueError as retry_exc:
-            _write_json(
-                run_dir / "error.json",
-                {
-                    "error": str(retry_exc),
-                    "stage": "stage2_validation",
-                },
-            )
-            raise
+            if str(retry_exc) == "total_estimated_value_inr must equal the sum of item estimated_value_inr ranges.":
+                logger.warning("Stage 2 total mismatch persisted after retries; overriding totals in code.")
+                final_json = coerce_valuation_totals(stage2_retry_raw)
+                final_json["override_applied"] = {
+                    "field": "total_estimated_value_inr",
+                    "reason": "Model returned inconsistent totals after retries. Totals were recomputed from item ranges.",
+                }
+                _write_json(run_dir / "stage2_attempt2.json", final_json)
+            else:
+                _write_json(
+                    run_dir / "error.json",
+                    {
+                        "error": str(retry_exc),
+                        "stage": "stage2_validation",
+                    },
+                )
+                raise
 
     final_json["output_directory"] = str(run_dir)
     final_json["stage1_visual_decomposition"] = stage1_output

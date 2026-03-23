@@ -1,4 +1,0 @@
-{
-  "error": "total_estimated_value_inr must equal the sum of item estimated_value_inr ranges.",
-  "stage": "stage2_validation"
-}

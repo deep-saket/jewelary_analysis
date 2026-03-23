@@ -61,33 +61,7 @@ def _validate_range_object(value: Any, field_name: str) -> None:
         raise ValueError(f"{field_name} min cannot exceed max.")
 
 
-def parse_stage1_json(raw_text: str) -> dict[str, Any]:
-    parsed = parse_json_object(raw_text)
-
-    missing_top_level = REQUIRED_STAGE1_TOP_LEVEL_FIELDS - set(parsed.keys())
-    if missing_top_level:
-        raise ValueError(f"Stage 1 is missing top-level fields: {sorted(missing_top_level)}")
-
-    if not isinstance(parsed["items"], list):
-        raise ValueError("Stage 1 items must be a list.")
-    if not isinstance(parsed["ambiguities_and_occlusions"], list):
-        raise ValueError("Stage 1 ambiguities_and_occlusions must be a list.")
-
-    for index, item in enumerate(parsed["items"]):
-        if not isinstance(item, dict):
-            raise ValueError(f"Stage 1 item at index {index} must be an object.")
-        missing_item_fields = REQUIRED_STAGE1_ITEM_FIELDS - set(item.keys())
-        if missing_item_fields:
-            raise ValueError(f"Stage 1 item at index {index} is missing fields: {sorted(missing_item_fields)}")
-        if item["visual_confidence"] not in {"low", "medium", "high"}:
-            raise ValueError(f"Stage 1 item at index {index} has invalid visual_confidence.")
-
-    return parsed
-
-
-def parse_valuation_json(raw_text: str) -> dict[str, Any]:
-    parsed = parse_json_object(raw_text)
-
+def _validate_valuation_structure(parsed: dict[str, Any]) -> tuple[float, float]:
     missing_top_level = REQUIRED_TOP_LEVEL_FIELDS - set(parsed.keys())
     if missing_top_level:
         raise ValueError(f"Missing top-level fields: {sorted(missing_top_level)}")
@@ -120,8 +94,49 @@ def parse_valuation_json(raw_text: str) -> dict[str, Any]:
         total_min += float(item["estimated_value_inr"]["min"])
         total_max += float(item["estimated_value_inr"]["max"])
 
+    return total_min, total_max
+
+
+def parse_stage1_json(raw_text: str) -> dict[str, Any]:
+    parsed = parse_json_object(raw_text)
+
+    missing_top_level = REQUIRED_STAGE1_TOP_LEVEL_FIELDS - set(parsed.keys())
+    if missing_top_level:
+        raise ValueError(f"Stage 1 is missing top-level fields: {sorted(missing_top_level)}")
+
+    if not isinstance(parsed["items"], list):
+        raise ValueError("Stage 1 items must be a list.")
+    if not isinstance(parsed["ambiguities_and_occlusions"], list):
+        raise ValueError("Stage 1 ambiguities_and_occlusions must be a list.")
+
+    for index, item in enumerate(parsed["items"]):
+        if not isinstance(item, dict):
+            raise ValueError(f"Stage 1 item at index {index} must be an object.")
+        missing_item_fields = REQUIRED_STAGE1_ITEM_FIELDS - set(item.keys())
+        if missing_item_fields:
+            raise ValueError(f"Stage 1 item at index {index} is missing fields: {sorted(missing_item_fields)}")
+        if item["visual_confidence"] not in {"low", "medium", "high"}:
+            raise ValueError(f"Stage 1 item at index {index} has invalid visual_confidence.")
+
+    return parsed
+
+
+def parse_valuation_json(raw_text: str) -> dict[str, Any]:
+    parsed = parse_json_object(raw_text)
+    total_min, total_max = _validate_valuation_structure(parsed)
+
     reported_total = parsed["total_estimated_value_inr"]
     if abs(total_min - float(reported_total["min"])) > 1e-6 or abs(total_max - float(reported_total["max"])) > 1e-6:
         raise ValueError("total_estimated_value_inr must equal the sum of item estimated_value_inr ranges.")
 
+    return parsed
+
+
+def coerce_valuation_totals(raw_text: str) -> dict[str, Any]:
+    parsed = parse_json_object(raw_text)
+    total_min, total_max = _validate_valuation_structure(parsed)
+    parsed["total_estimated_value_inr"] = {
+        "min": total_min,
+        "max": total_max,
+    }
     return parsed
